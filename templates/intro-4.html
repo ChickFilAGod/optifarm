@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="float-container">
+  <div class="float-child left-side">
+    <div class="div-default">
+      <h1>The OptiFarm Grapher</h1>
+      <div class="div-default">
+        <p>
+          Let's check your guess using the OptiFarm Graphing Tool. Since it's 
+          your first time, I have plugged in all the information for you! Click submit for each row and
+          notice the changes to the graph. Also, look at the similarities
+          between the math equations and the information we have about profit, man hours, and feed
+          mix. In the future, you'll have to do this on your own!
+        </p>
+      </div>
+    </div>
+    <div class="formulas">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-x">&#119935;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="Label-x" maxlength="35" value="Hogs" onkeyup="checkForm()">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="labelx-button" onclick="submitLabelFormX()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-y">&#119936;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="Label-y" maxlength="35" value="Cattle" onkeyup="checkForm()">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="labely-button" onclick="submitLabelFormY()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label profit" id="problemType">Total Profit</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="P1" value="25" maxlength="9" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="P1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="P2" value="79" maxlength="9" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="P1">&#119936;</label>
+        <button class="btn btn-outline-secondary formula-label" type="button" id="profit-button" onclick="submitProfitForm()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Man Hours</label>
+        <input type="text" class="form-control" id="N1" value="3" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="N2" value="12" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119936;</label>
+        <label class="input-group-text formula-label">&#x2264;</label>
+        <input type="text" class="form-control" id="N3" value="600" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-1" onclick="submitFormulaForm1()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Feed Mix</label>
+        <input type="text" class="form-control" id="M1" value="15" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="M2" value="45" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119936;</label>
+        <label class="input-group-text formula-label">&#x2264;</label>
+        <input type="text" class="form-control" id="M3" value="2700" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-2" onclick="submitFormulaForm2()" disabled="disabled">Submit!</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed-bottom">
+    <a class="btn btn-primary next" href="{{ url_for('intro.intro3') }}">Back</a>
+    <a class="btn btn-primary next" href="{{ url_for('intro.intro5') }}">Next</a>
+  </div>
+
+  <div class="float-child">
+    <div class="card board-card-2">
+      <div id="board" class="jxgbox board"></div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All Solutions</h5>
+        <p class="card-text" id="all-solutions"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script> 
+{% endblock %}

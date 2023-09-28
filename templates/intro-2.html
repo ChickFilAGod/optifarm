@@ -1,0 +1,48 @@
+{% extends 'base_intro.html' %}
+
+{% block page_title %}
+  <h1>The Facts</h1>
+{% endblock %}
+
+{% block left_content %}
+  <p>
+    Farmer George raises two main types animals on his farm: hogs and cattle. Both can eventually
+    be sold for a nice profit, but they require lots of time and money.
+  </p>
+  <div class="card profit info-card">
+    <div class="card-body">
+      <h5 class="card-title">Profit</h5>
+      <p>
+        In the year of Farmer George, hogs can be sold at the market to make a
+        profit of $25, while cattle can be sold to make $79. 
+      </p>
+    </div>
+  </div>
+  <div class="card constraint info-card">
+    <div class="card-body">
+      <h5 class="card-title">Labor</h5>
+      <p>
+        Farmer George faces a challenging labor constraint: he has 600 man hours for
+        raising animals. Each hog takes 3 hours of work, while each cow takes 12 hours of work.
+      </p>
+    </div>
+  </div>
+  <div class="card constraint info-card">
+    <div class="card-body">
+      <h5 class="card-title">Feed</h5>
+      <p>
+        Farmer George also faces a challenging feed constraint: he only has 2700 bushels of animal
+        feed. Each hog requires 15 bushels of feed, while each cow requires 45 bushels of feed.
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block next_button %}
+  <a class="btn btn-primary next" href="{{ url_for('intro.intro1') }}">Back</a>
+  <a class="btn btn-primary next" href="{{ url_for('intro.intro3') }}">Next</a>
+{% endblock %}
+
+{% block right_content %}
+  <img src="../static/imgs/cattle-and-hogs.jpg" class="rounded-bottom rounded-top farm-img">
+{% endblock %}

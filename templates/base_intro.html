@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="div-default">
+  <div class="float-container">
+    <div class="float-child left-side-wide">
+      {% block page_title %}{% endblock %}
+      <div class="left-content">
+        {% block left_content %}{% endblock %}
+      </div>
+      <div class="fixed-bottom">
+        {% block next_button %}{% endblock %}
+      </div>
+    </div>
+    <div class="float-child">
+      <div class="card img-card">
+        {% block right_content %}{% endblock %}
+      </div>
+    </div>
+  </div> 
+</div>
+
+{% endblock %}

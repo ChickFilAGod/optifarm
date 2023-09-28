@@ -1,0 +1,26 @@
+{% extends 'base_intro.html' %}
+
+{% block page_title %}
+  <h1>The Farming Problem</h1>
+{% endblock %}
+
+{% block left_content %}
+  <p>
+    Meet Farmer George, a hardworking farmer facing a crucial dilemma on his family farm: 
+    what is the ideal balance of hogs and cattle to maximize profitability? He 
+    is confronted with complex considerations, including factors such as market 
+    demands, labor costs, and feed costs. Luckily for Farmer George, this issue can be solved linear 
+    programming! In this introduction, you'll delve into the fundamentals of linear programming 
+    problems, learn how to use the OptiFarm Grapher tool, and consider the diverse real-world scenarios 
+    where linear programming can play a pivotal role. Continue on to help Farmer George harness the power 
+    of mathematics in the world of farming.
+  </p>
+{% endblock %}
+
+{% block next_button %}
+  <a class="btn btn-primary next" href="{{ url_for('intro.intro2') }}">Next</a>
+{% endblock %}
+
+{% block right_content %}
+  <img src="../static/imgs/farmer-2.jpg" class="rounded-bottom rounded-top farm-img">
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="float-container">
+  <div class="float-child left-side">
+    <div class="div-default">
+      <h1>OptiFarm Graphing Playground</h1>
+      <div class="div-default">
+        <p>Solve your own problems!</p>
+      </div>
+    </div>
+    <div class="formulas">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-x">&#119935;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="Label-x" maxlength="35" onkeyup="checkForm()">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="labelx-button" onclick="submitLabelFormX()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-y">&#119936;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="Label-y" maxlength="35" onkeyup="checkForm()">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="labely-button" onclick="submitLabelFormY()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label profit" id="problemType">Maximize</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control" id="P1" maxlength="9" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="P1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="P2" maxlength="9" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="P1">&#119936;</label>
+        <button class="btn btn-outline-secondary formula-label" type="button" id="profit-button" onclick="submitProfitForm()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Constraint</label>
+        <input type="text" class="form-control" id="N1" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="N2" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119936;</label>
+        <label class="input-group-text formula-label" id="operator1">&#x2264;</label>
+        <input type="text" class="form-control" id="N3" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-1" onclick="submitFormulaForm1()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Constraint</label>
+        <input type="text" class="form-control" id="M1" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="M2" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119936;</label>
+        <label class="input-group-text formula-label" id="operator2">&#x2264;</label>
+        <input type="text" class="form-control" id="M3" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-2" onclick="submitFormulaForm2()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-2" onclick="flipProblem()">Flip Problem</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All Solutions</h5>
+        <p class="card-text" id="all-solutions"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="card board-card">
+      <div id="board" class="jxgbox board"></div>
+    </div>
+  </div>
+</div>
+  
+<script src="{{ url_for('static', filename='main.js') }}"></script> 
+{% endblock %}
+

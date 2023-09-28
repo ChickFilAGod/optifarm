@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="float-container">
+  <div class="float-child left-side">
+    <div class="card info-card">
+      <div class="row">
+        <div class="col-9">
+          <div class="card-body">
+            <h3 class="card-title practice-title">
+              The Farmer's Feed Mix Problem 
+              <button type="button" class="btn btn-outline-secondary question-btn" data-bs-toggle="modal" data-bs-target="#info-problem">?</button>
+            </h3>
+            
+            <div class="input-group mb-3">
+              <label class="input-group-text title formula-label primary">Solution</label>
+              <input type="text" class="form-control" id="S1" maxlength="7" onkeyup="checkForm2()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+              <label class="input-group-text" for="S1">&#119935;</label>
+              <label class="input-group-text formula-label">&#x2b;</label>
+              <input type="text" class="form-control" id="S2" maxlength="7" onkeyup="checkForm2()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+              <label class="input-group-text" for="S2">&#119936;</label>
+              <button class="btn btn-outline-secondary formula-label" type="button" id="solution-button" onclick="submitSolutionForm()" disabled="disabled">Submit!</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <img src="../static/imgs/feeding-chickens-feed-mix.jpg" class="rounded-end farm-img">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="formulas">
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-x">&#119935;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control bg-white" id="Label-x" disabled="disabled" value="Kilograms of Soybeans">
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="Label-y">&#119936;</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control bg-white" id="Label-y" disabled="disabled" value="Kilograms of Corn">
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label profit" id="problemType">Total Cost</label>
+        <label class="input-group-text formula-label">=</label>
+        <input type="text" class="form-control bg-white" id="P1" disabled="disabled" value="0.37">
+        <label class="input-group-text" for="P1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control bg-white" id="P2" disabled="disabled" value="0.23">
+        <label class="input-group-text" for="P1">&#119936;</label>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Constraint</label>
+        <input type="text" class="form-control" id="N1" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="N2" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="N1">&#119936;</label>
+        <label class="input-group-text formula-label">&#x2265;</label>
+        <input type="text" class="form-control" id="N3" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-1" onclick="submitFormulaForm1()" disabled="disabled">Submit!</button>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text title formula-label constraint">Constraint</label>
+        <input type="text" class="form-control" id="M1" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119935;</label>
+        <label class="input-group-text formula-label">&#x2b;</label>
+        <input type="text" class="form-control" id="M2" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <label class="input-group-text" for="M1">&#119936;</label>
+        <label class="input-group-text formula-label">&#x2265;</label>
+        <input type="text" class="form-control" id="M3" maxlength="7" onkeyup="checkForm()" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
+        <button class="btn btn-outline-secondary formula-label" type="button" id="formula-button-2" onclick="submitFormulaForm2()" disabled="disabled">Submit!</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">All Solutions</h5>
+        <p class="card-text" id="all-solutions"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-child">
+    <div class="card board-card">
+      <div id="board" class="jxgbox board"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Info Popup -->
+<div class="modal modal-lg fade" id="info-problem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <img src="../static/imgs/feeding-chickens-2-feed-mix.jpg" class="rounded-top">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Problem Information</h1>
+      </div>
+      <div class="modal-body"> 
+        Farmer Joseph, a poultry farmer, wants to provide the most cost-effective feed mix for his 
+        flock of chickens. He's faced with the decision of blending two types of grains: corn and soybeans. Corn, 
+        priced at $0.23 per kilogram, offers 75 grams of protein and 740 grams of carbohydrates per kilogram. Soybeans, 
+        costing $0.37 per kilogram, provide 400 grams of protein and 320 grams of carbohydrates per kilogram. Farmer 
+        Joseph needs precisely 20,000 grams of protein and 60,000 grams of carbohydrates in his batch of feed mix to keep 
+        his chickens healthy. Farmer Joseph has already set the labels and profit formula, can you help finish 
+        his work and determine the most cost-effective combination of corn and soybeans (rounded to the kilogram)?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Congratulations Popup -->
+<div class="modal fade" id="win-problem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <img src="../static/imgs/farmer-smile.jpg" class="rounded-top">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Nice Work!</h1>
+      </div>
+      <div class="modal-body"> 
+        Congratulations! Your expertise in linear programming has made a significant impact 
+        on Farmer Joseph's success.
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-success" href="{{ url_for('practice.practice') }}">Back to Problem Selection</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="{{ url_for('static', filename='main.js') }}"></script> 
+{% endblock %}

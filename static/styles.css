@@ -1,0 +1,129 @@
+.div-default{
+    margin: 10px;
+}
+.navbar-brand{
+    margin-left:20px;
+}
+.board {
+    width:100%; 
+    height:100%; 
+    border-width: 0; 
+    margin: 0 auto; /* center */
+    padding:1px;
+}
+.zero-margin{
+    margin-left: 0px;
+}
+.question-btn{
+    margin-left: 12px;
+}
+.formula-label{
+    color:black;
+    background-color:#c7cace;
+    border-color:#ced4da;
+}
+.formula-label:disabled{
+    color:black;
+    background-color:#e9ecef;
+    border-color:#ced4da;
+}
+.input-group-text{
+    text-align: center;
+    display: inline-block;
+}
+.title{
+    width: 100px;
+}
+.constraint{
+    background-color:#FBCEB1;
+}
+.profit{
+    background-color:#b7edb7;
+}
+.primary{
+    background-color:#9cd5f8;
+}
+.left-side-wide{
+    width: 56.5vw
+}
+.left-side{
+    width: 50vw
+}
+.info-card{
+    margin-bottom: 20px; 
+    font-size: medium;
+}
+.rc-width{
+    width: 40vw; 
+}
+.right-cards{
+    margin-bottom: 20px; 
+    font-size: medium;
+}
+.left-paragraph{
+    margin-bottom: 20px;
+}
+.left-content{
+    width: 50vw; 
+    margin-top: 10px; 
+    font-size: larger;
+}
+.practice-title{
+    padding-bottom: 10px; 
+    display: inline-flex; 
+    vertical-align:middle;
+}
+.home-paragraph{
+    width: 50vw; 
+    margin-top: 10px; 
+    font-size: x-large;
+}
+.farm-img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+.card {
+    border-color: #356aa0;
+}
+.float-child {
+    float: left;
+    padding-left: 10px;
+    padding-top: 10px;
+}  
+.board-card {
+    width: 47.6vw;
+    height: 87.5vh;
+}
+.board-card-2 {
+    width: 47.6vw;
+    height: 67.5vh;
+    margin-bottom: 20px; 
+}
+.img-card {
+    width: 40vw;
+    height: 85vh;
+}
+.practice-card {
+    width: 46vw;
+    margin: 5px;
+    margin-left: 2vw;
+}
+.intro-card {
+    width: 32vw;
+    height: 32vw;
+}
+.next{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.slider{
+    width: 100%;
+}
+.slider-div{
+    width: 30vw;
+}
+.slider-value{
+    text-align: center;
+}

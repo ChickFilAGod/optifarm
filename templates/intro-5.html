@@ -1,0 +1,25 @@
+{% extends 'base_intro.html' %}
+
+{% block page_title %}
+  <h1>Conclusion</h1>
+{% endblock %}
+
+{% block left_content %}
+  <p class="left-paragraph">
+    Thanks to your help, Farmer George realized he needs exactly <b>20 cows</b> and <b>120 hogs</b> on his 
+    family farm to get a maximum profit of <b>$4580</b>. Comparing this to your original guess, can you
+    now see the power of linear programming! Now that you're done with this introduction, explore the
+    <b>Problems</b> page to practice more difficult problems on your own! Also, feel free to use the <b>Explore</b>
+    page to solve your own problems with the OptiFarm Grapher Tool!
+  </p>
+{% endblock %}
+
+{% block next_button %}
+  <a class="btn btn-primary next" href="{{ url_for('intro.intro1') }}">Restart</a>
+  <a class="btn btn-primary next" href="{{ url_for('practice.practice') }}">Practice Problems</a>
+  <a class="btn btn-primary next" href="{{ url_for('explore.explore') }}">Playground</a>
+{% endblock %}
+
+{% block right_content %}
+  <img src="../static/imgs/farm-ranch.jpg" class="rounded-bottom rounded-top farm-img">
+{% endblock %}
