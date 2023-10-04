@@ -96,9 +96,13 @@
     height: 87.5vh;
 }
 .board-card-2 {
-    width: 47.6vw;
+    width: 46.6vw;
     height: 67.5vh;
     margin-bottom: 20px; 
+    margin-left: 1vw;
+}
+.board-desc{
+    margin-left: 1vw;
 }
 .img-card {
     width: 40vw;
