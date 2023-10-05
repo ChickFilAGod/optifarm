@@ -1,4 +1,3 @@
-import functools
 from flask import *
 
 bp = Blueprint('intro', __name__, url_prefix='/intro')
