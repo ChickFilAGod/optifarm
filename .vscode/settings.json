@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/56b5564c-9a81-4a47-951c-7f638f1196fc/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/optifarm",
+    "appService.deploySubpath": "."
+}
