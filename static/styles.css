@@ -94,6 +94,7 @@
 .board-card {
     width: 47.6vw;
     height: 87.5vh;
+    border-width: 0px;
 }
 .board-card-2 {
     width: 46.6vw;
