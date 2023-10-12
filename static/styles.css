@@ -101,6 +101,7 @@
     height: 67.5vh;
     margin-bottom: 20px; 
     margin-left: 1vw;
+    border-width: 0px;
 }
 .board-desc{
     margin-left: 1vw;
