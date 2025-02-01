@@ -1,0 +1,1 @@
+This Flask-based web application introduces Algebra 2 students to linear programming concepts. It was my first project incorporating JavaScript, HTML, and CSS. The app was submitted to the Congressional App Challenge and earned 2nd place in Iowa's 3rd Congressional District.
